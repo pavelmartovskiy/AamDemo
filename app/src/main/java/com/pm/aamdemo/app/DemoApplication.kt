@@ -1,6 +1,12 @@
 package com.pm.aamdemo.app
 
-import android.app.Application
+import dagger.android.support.DaggerApplication
 
 
-class DemoApplication : Application()
+class DemoApplication : DaggerApplication() {
+  override fun applicationInjector() = DaggerDemoApplicationComponent
+      .builder()
+      .application(this)
+      .build()
+
+}
